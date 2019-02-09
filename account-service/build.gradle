@@ -1,0 +1,74 @@
+plugins {
+    // Apply the java-library plugin to add support for Java Library
+    id 'java-library'
+    id 'java'
+ 	id 'org.springframework.boot' version '2.0.5.RELEASE'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+
+dependencies {
+	// This dependency is exported to consumers, that is to say found on their compile classpath.
+    api 'org.apache.commons:commons-math3:3.6.1'
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+	api group: 'commons-io', name: 'commons-io', version: '2.6'
+    
+    implementation 'org.springframework.boot:spring-boot-dependencies:2.0.5.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    
+    // https://mvnrepository.com/artifact/com.google.code.simple-spring-memcached/spring-cache
+	implementation group: 'com.google.code.simple-spring-memcached', name: 'spring-cache', version: '4.1.2'
+	// https://mvnrepository.com/artifact/com.google.code.simple-spring-memcached/xmemcached-provider
+	implementation group: 'com.google.code.simple-spring-memcached', name: 'xmemcached-provider', version: '4.1.2'
+	
+    // https://mvnrepository.com/artifact/com.googlecode.xmemcached/xmemcached
+	implementation group: 'com.googlecode.xmemcached', name: 'xmemcached', version: '2.4.6'
+    
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.1.2.RELEASE'
+
+	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt
+	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+
+
+    
+   
+    // https://mvnrepository.com/artifact/org.apache.derby/derby
+	implementation group: 'org.apache.derby', name: 'derby', version: '10.14.2.0'
+	// https://mvnrepository.com/artifact/org.apache.derby/derbyclient
+	api group: 'org.apache.derby', name: 'derbyclient', version: '10.14.2.0'
+	
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
+	api group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.1.2.RELEASE'
+
+	 //implementation "org.springframework.data:spring-data-cassandra:2.1.4.RELEASE"
+    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
+    implementation 'com.google.guava:guava:23.0'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        
+	 // Use JUnit test framework
+    testImplementation 'junit:junit:4.12'
+    // https://mvnrepository.com/artifact/org.mockito/mockito-all
+	testImplementation group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+	
+	
+    
+    components {
+        withModule('org.springframework:spring-beans') {
+            allVariants {
+                withDependencyConstraints {
+                    // Need to patch constraints because snakeyaml is an optional dependency
+                    it.findAll { it.name == 'snakeyaml' }.each { it.version { strictly '1.19' } }
+                }
+            }
+        }
+    }
+}
+
+
+bootJar {
+    mainClassName = 'org.c4c.tiny.account.App'
+}
