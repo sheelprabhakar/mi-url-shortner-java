@@ -80,7 +80,7 @@ public class ShortIdGeneratorServiceImpl implements ShortIdGeneratorService {
 	}
 
 	private int getMaxSeq() {
-		int seqNo =0;
+		int seqNo =1;
 		if(_repository.findById(SETTINGS_KEY).isPresent())
 		{	
 			ServiceSettings settings = _repository.findById(SETTINGS_KEY).get();

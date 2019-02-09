@@ -24,9 +24,11 @@ public interface UrlDataService {
 
 	void addUrl(UrlData data);
 
-	UrlData create(UrlDataResource data);
-
 	UrlData findById(String id);
 
 	List<UrlData> getallUrls();
+
+	UrlData create(UrlDataResource data, String username);
+	
+	List<UrlData> findByUsername(String username);
 }
