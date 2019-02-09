@@ -27,7 +27,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.code.ssm.api.ParameterValueKeyProvider;
-import com.google.code.ssm.api.ReadThroughAssignCache;
+
 import com.google.code.ssm.api.ReadThroughSingleCache;
 
 @Service
@@ -46,13 +46,14 @@ public class UrlDataServiceImpl implements UrlDataService {
 	}
 
 	@Override
-	public UrlData create(UrlDataResource data) {
+	public UrlData create(UrlDataResource data, String username) {
 
 		UrlData d = new UrlData();
 		d.setShortUrl(_shortIdGenerator.getNextSeq());
 		d.setActive(true);
 		d.setCreateDate(Calendar.getInstance());
 		d.setUrl(data.getUrl());
+		d.setUsername(username);
 		return this._urlData.save(d);
 
 	}
@@ -70,6 +71,11 @@ public class UrlDataServiceImpl implements UrlDataService {
 	public List<UrlData> getallUrls() {
 
 		return (List<UrlData>) this._urlData.findAll();
+	}
+
+	@Override
+	public List<UrlData> findByUsername(String username) {
+		return (List<UrlData>) this._urlData.findByUsername(username);
 	}
 
 }

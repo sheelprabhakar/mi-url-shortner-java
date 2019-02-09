@@ -15,11 +15,14 @@
  ******************************************************************************/
 package org.c4c.tiny.repository;
 
+import java.util.List;
+
 import org.c4c.tiny.domain.UrlData;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UrlDataRepository extends CrudRepository<UrlData, String> {
+	List<UrlData> findByUsername(String username);
 
 }

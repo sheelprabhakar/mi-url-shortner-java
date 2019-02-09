@@ -25,6 +25,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 
 @Entity(name = "url_data")
 @Table(name = "url_data")
@@ -46,6 +47,22 @@ public class UrlData implements Serializable{
 	@Temporal(TemporalType.DATE)
 	@Column(name = "create_date", nullable = false)
 	private Calendar createDate;
+
+	@Size(min = 4, max = 255, message = "Minimum username length: 4 characters")
+	@Column(unique = false, nullable = false)
+	private String username;
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 	@Column(name = "hit_count", nullable = false)
 	private int hitCount;

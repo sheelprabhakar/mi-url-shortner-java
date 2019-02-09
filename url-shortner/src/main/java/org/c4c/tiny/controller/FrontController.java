@@ -17,7 +17,7 @@ public class FrontController extends BaseController{
 	@Autowired
 	private UrlDataService _service;
 	
-	@GetMapping(value = "/{id}", produces = "application/json")
+	@GetMapping(value = "/{id}")
 	public @ResponseBody ResponseEntity<?>redirect(@PathVariable("id") String id){
 		UrlData data = this._service.findById(id);
 		if(data == null)
