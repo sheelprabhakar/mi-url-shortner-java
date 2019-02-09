@@ -2,7 +2,7 @@ plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
     id 'java'
- 	id 'org.springframework.boot' version '2.0.5.RELEASE'
+ 	id 'org.springframework.boot' version '2.1.2.RELEASE'
 }
 
 apply plugin: 'io.spring.dependency-management'
@@ -14,8 +14,12 @@ dependencies {
     // https://mvnrepository.com/artifact/commons-io/commons-io
 	api group: 'commons-io', name: 'commons-io', version: '2.6'
     
-    implementation 'org.springframework.boot:spring-boot-dependencies:2.0.5.RELEASE'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies
+	implementation group: 'org.springframework.boot', name: 'spring-boot-dependencies', version: '2.1.2.RELEASE', ext: 'pom'
+
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.1.2.RELEASE'
+
     // https://mvnrepository.com/artifact/com.google.code.simple-spring-memcached/spring-cache
 	implementation group: 'com.google.code.simple-spring-memcached', name: 'spring-cache', version: '4.1.2'
 	// https://mvnrepository.com/artifact/com.google.code.simple-spring-memcached/xmemcached-provider
@@ -24,7 +28,9 @@ dependencies {
     // https://mvnrepository.com/artifact/com.googlecode.xmemcached/xmemcached
 	implementation group: 'com.googlecode.xmemcached', name: 'xmemcached', version: '2.4.6'
     
-   
+   	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-client
+	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '2.1.0.RELEASE'
+	
     // https://mvnrepository.com/artifact/org.apache.derby/derby
 	implementation group: 'org.apache.derby', name: 'derby', version: '10.14.2.0'
 	// https://mvnrepository.com/artifact/org.apache.derby/derbyclient

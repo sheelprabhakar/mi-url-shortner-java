@@ -2,7 +2,7 @@ plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
     id 'java'
- 	id 'org.springframework.boot' version '2.0.5.RELEASE'
+ 	id 'org.springframework.boot' version '2.1.2.RELEASE'
 }
 
 apply plugin: 'io.spring.dependency-management'
@@ -14,7 +14,7 @@ dependencies {
     // https://mvnrepository.com/artifact/commons-io/commons-io
 	api group: 'commons-io', name: 'commons-io', version: '2.6'
     
-    implementation 'org.springframework.boot:spring-boot-dependencies:2.0.5.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-dependencies:2.1.2.RELEASE'
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
     
@@ -31,9 +31,12 @@ dependencies {
 
 	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt
 	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+	
+	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-client
+	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '2.1.0.RELEASE'
+	
 
-
-    
+   
    
     // https://mvnrepository.com/artifact/org.apache.derby/derby
 	implementation group: 'org.apache.derby', name: 'derby', version: '10.14.2.0'
