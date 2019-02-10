@@ -44,6 +44,8 @@ dependencies {
 
 	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt
 	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-config
+	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version: '2.1.0.RELEASE'
 	
 	 //implementation "org.springframework.data:spring-data-cassandra:2.1.4.RELEASE"
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.

@@ -11,6 +11,8 @@ import org.c4c.tiny.account.model.UserResource;
 import org.c4c.tiny.account.model.UserResponseResource;
 import org.c4c.tiny.account.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -23,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
+@RefreshScope
 @RestController
 @RequestMapping("/api/accounts")
 public class AccountController {
@@ -76,4 +78,11 @@ public class AccountController {
 		return _accountService.refresh(req.getRemoteUser());
 	}
 
+	@Value("${message:Hello default}")
+    private String message;
+	
+	@GetMapping("/message")
+    String getMessage() {
+        return this.message;
+    }
 }

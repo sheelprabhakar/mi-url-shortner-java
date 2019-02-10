@@ -35,7 +35,10 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-client
 	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '2.1.0.RELEASE'
 	
+	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-config
+	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version: '2.1.0.RELEASE'
 
+	
    
    
     // https://mvnrepository.com/artifact/org.apache.derby/derby
