@@ -7,7 +7,16 @@ This is a POC application, which demonstrates Microservice Architecture Pattern 
 
 ### Account Service
 
+Micro service for users account managment and authentication.
+
+| Method  | Path | Description
+| ------------- | ------------- | ------------------ |
+| X  | X  | X |
+
 ### Url Service
+
+Micro service for shortening URL and reving redirects.
+
 
 ### Reporting Service <ToDo>
 
