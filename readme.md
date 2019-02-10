@@ -1,5 +1,5 @@
 Note: Work in progress
-Basic service are implemented and working. Auth filter in api host, Docker, Swagger and config service and UI implementation under way.
+Basic service are implemented and working. Auth filter in api host, Docker, Swagger and UI implementation under way.
 # URL Shortner
 ### URL Shortner Service using Spring Boot and microservice architecture
 
@@ -32,7 +32,7 @@ Micro service for shortening URL and reving redirects.
 
 ### API Gateway
 
-### Config Service <ToDO>
+### Config Service
 
 git cmd
 
