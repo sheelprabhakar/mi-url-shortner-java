@@ -1,5 +1,11 @@
+Note: Work in progress
+Basic service are implemented and working. Docker, Swagger and config service and UI implementation under way.
 # URL Shortner
 ### URL Shortner Service using Spring Boot and microservice architecture
+
+## Dependencies
+
+Java 8, Gradle, Spring Boot, Spring Cloud (Eureka, ZUUL), Apache Derby for Mocking RDS, memcached, AngularJs
 
 This is a POC application, which demonstrates Microservice Architecture Pattern using Spring Boot, Spring Cloud
 
