@@ -39,6 +39,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.c4c.tiny.App;
@@ -71,9 +72,12 @@ public class FrontControllerTest {
 	private String createToken(String username) {
 
 		Claims claims = Jwts.claims().setSubject(username);
-		List<String> authorithies = new ArrayList<>();
-		authorithies.add("ROLE_ADMIN");
-		claims.put("authorities", authorithies);
+		//List<String> authorithies = new ArrayList<>();
+		LinkedHashMap<String, String> authorithies = new LinkedHashMap<String, String>();
+		authorithies.put("authority","ROLE_ADMIN");
+		ArrayList <LinkedHashMap<String, String>> lst = new ArrayList<>();
+		lst.add(authorithies);
+		claims.put("authorities", lst);
 
 		Date now = new Date();
 		Date validity = new Date(now.getTime() + validityInMilliseconds);
