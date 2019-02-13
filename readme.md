@@ -1,5 +1,5 @@
 Note: Work in progress
-Basic service are implemented and working. Auth filter in api host, Docker, Swagger and UI implementation under way.
+Basic service are implemented and working. Swagger and UI implementation under way.
 # URL Shortner
 ### URL Shortner Service using Spring Boot and microservice architecture
 
