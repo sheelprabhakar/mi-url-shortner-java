@@ -1,8 +1,10 @@
 package org.c4c.tiny.security;
 
 import java.io.IOException;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Set;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -10,9 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
+
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -58,13 +62,19 @@ public class JwtTokenAuthenticationFilter extends  OncePerRequestFilter {
 			String username = claims.getSubject();
 			if(username != null) {
 				@SuppressWarnings("unchecked")
-				List<String> authorities = (List<String>) claims.get("authorities");
+				List<LinkedHashMap<String, String>> authorities = (List<LinkedHashMap<String, String>>) claims.get("authorities");
+				
+				Set<GrantedAuthority> grantedAuthorities = new LinkedHashSet<>();
+				for (LinkedHashMap<String, String> linkedHashMap : authorities) {
+					SimpleGrantedAuthority sa = new SimpleGrantedAuthority(linkedHashMap.get("authority"));
+					grantedAuthorities.add(sa);
+				}
 				
 				// 5. Create auth object
 				// UsernamePasswordAuthenticationToken: A built-in object, used by spring to represent the current authenticated / being authenticated user.
 				// It needs a list of authorities, which has type of GrantedAuthority interface, where SimpleGrantedAuthority is an implementation of that interface
 				 UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
-								 username, null, authorities.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList()));
+								 username, null, grantedAuthorities);//lauthorities.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList()));
 				 
 				 // 6. Authenticate the user
 				 // Now, user is authenticated
